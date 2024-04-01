@@ -1,5 +1,4 @@
 import torch
-import torch.nn.functional as F
 from torch import Tensor, nn
 from zeta import MambaBlock
 from zeta.nn import FeedForward
@@ -38,7 +37,7 @@ class TransformerMoEBlock(nn.Module):
         self.attn = MultiQueryAttention(dim, heads)
         self.moe = MoE(
             dim,
-            num_experts = num_experts,
+            num_experts=num_experts,
             hidden_dim=dim * 4,
         )
 
@@ -108,7 +107,7 @@ class TransformerBlock(nn.Module):
         x = SimpleRMSNorm(self.dim)(x)
         x, _, _ = self.attn(x)
         x += skip
-        
+
         skip_two = x
 
         x = SimpleRMSNorm(self.dim)(x)
@@ -157,10 +156,9 @@ class MambaMoELayer(nn.Module):
         # MoE
         self.moe = MoE(
             dim,
-            num_experts = num_experts,
+            num_experts=num_experts,
             hidden_dim=dim * 4,
         )
-
 
     def forward(self, x: Tensor):
         """
@@ -236,14 +234,3 @@ class JambaBlock(nn.Module):
         return x
 
 
-x = torch.randn(1, 128, 512)
-
-jamba = JambaBlock(
-    512,
-    128,
-    128,
-    8,
-    4,
-)
-output = jamba(x)
-print(output.shape)
