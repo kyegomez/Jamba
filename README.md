@@ -19,7 +19,7 @@ x = torch.randn(1, 128, 512)
 # Create an instance of the JambaBlock class
 jamba = JambaBlock(
     512,  # dim
-    128,  # hidden channels
+    128,  # d_state
     128,  # d_con
     8,    # number of experts
     4,    # number of experts per token
