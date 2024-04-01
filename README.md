@@ -4,6 +4,9 @@
 PyTorch Implementation of Jamba: "Jamba: A Hybrid Transformer-Mamba Language Model"
 
 
+## install
+`$ pip install jamba`
+
 
 
 # License
