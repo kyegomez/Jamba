@@ -49,5 +49,9 @@ print(output)
 
 ```
 
+## Train
+`python3 train.py`
+
+
 # License
 MIT
